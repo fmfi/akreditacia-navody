@@ -1,0 +1,4 @@
+Zavislosti:
+
+pip install Flask
+

@@ -1,0 +1,115 @@
+{% extends 'layout.html' %}
+{% block title %}Kategorizácia publikácií pre akreditáciu{% endblock %}
+{% block content %}
+<h1>Kategorizácia publikácií pre akreditáciu</h1>
+
+<div class="panel panel-default">
+  <div class="panel-heading">INFORMATICKÉ VEDY</div>
+  <div class="panel-body">
+    <ul>
+      <li>Článok v recenzovanom časopise:
+        <ul>
+          <li>impact factor aspoň 0.39 ⇒ kategória A</li>
+          <li>ostatné evidované v SCOPUS alebo Inspec ⇒ kategória B</li>
+        </ul>
+      </li>
+
+      <li>Konferenčný článok alebo iný zborník:
+        <ul>
+          <li>zborník vydaný ACM, IEEE, Springer, Elsevier a pod. a súčasne:
+            <ul>
+              <li>svetový kongres/konferencia zásadného významu ⇒ kategória A</li>
+              <li>pomer prijatých príspevkov do 25% ⇒ kategória A</li>
+              <li>ostatné medzinárodné konferencie ⇒ kategória B</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    
+      <li>Monografia (Springer, Elsevier a pod.) ⇒ kategória A</li>
+      <li>Kapitola v monografii (Springer, Elsevier a pod.) ⇒ kategória B</li>
+    </ul>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">MATEMATIKA A ŠTATISTIKA</div>
+  <div class="panel-body">
+    <ul>
+      <li>Článok v recenzovanom časopise alebo v zborníku:
+        <ul>
+          <li>impact factor alebo SNIP aspoň 0.5 ⇒ kategória A</li>
+          <li>ostatné evidované vo WoS alebo Scopus ⇒ kategória B</li>
+        </ul>
+      </li>
+
+      <li>Monografia AAA ⇒ kategória A</li>
+      <li>Kapitola vo svetovom jazyku ABA, ABC ⇒ kategória A</li>
+      <li>Učebnica zásadného významu vo svetovom jazyku ⇒ kategória B</li>
+    </ul>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">FYZIKA</div>
+  <div class="panel-body">
+    <ul>
+      <li>Článok v časopise evidovaný vo WoS:
+        <ul>
+          <li>impact factor aspoň 1.25 ⇒ kategória A</li>
+          <li>impact factor aspoň 0.69 ⇒ kategória B</li>
+        </ul>
+      </li>
+
+      <li>Monografia AAA ⇒ kategória A</li>
+      <li>Kapitoly vo vedeckých monografiách
+        <ul>
+          <li>kategórie ABA alebo ABC vo svetovom jazyku ⇒ kategória A</li>
+          <li>ostatné ⇒ kategória B</li>
+        </ul>
+      </li>
+      <li>Učebnica zásadného významu vo svetovom jazyku ⇒ kategória B</li>
+    </ul>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">PEDAGOGICKÉ VEDY</div>
+  <div class="panel-body">
+    <ul>
+      <li>Článok v časopise (vedecká štúdia):
+        <ul>
+          <li>evidovaný v medzinárodných profesijných databázach ⇒ kategória A</li>
+          <li>impact factor aspoň 0.14 ⇒ kategória A</li>
+          <li>ostatné renomované časopisy ⇒ kategória B</li>
+        </ul>
+      </li>
+
+      <li>Recenzovaný článok vo vedeckom zborníku:
+        <ul>
+          <li>zo svetových kongresov venovaných oblasti výskumu ⇒ kategória A</li>
+          <li>medzinárodná konferencia ⇒ kategória B</li>
+        </ul>
+      </li>
+
+      <li>Monografia AAA ⇒ kategória A</li>
+      <li>Ostatné monografie ⇒ kategória B</li>
+      <li>Kapitola vo vedeckej monografii:
+        <ul>
+          <li>zásadného významu pre oblasť výskumu vo svetovom jazyku v zahraničnom vydavateľstve ⇒ kategória A</li>
+          <li>ostatné ⇒ kategória B</li>
+        </ul>
+      </li>
+
+      <li>Preklady textov:
+        <ul>
+          <li>s rozsiahlym poznámkovým aparátom, predslovom so zásadným vplyvom ⇒ kategória A</li>
+          <li>rozširujúce horizonty ⇒ kategória B</li>
+        </ul>
+      </li>
+
+      <li>Učebnice zásadného významu pre rozvoj odboru ⇒ kategória B</li>
+    </ul>
+  </div>
+</div>
+{% endblock %}
