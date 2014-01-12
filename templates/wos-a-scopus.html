@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+{% block title %}Web of Science a SCOPUS{% endblock %}
+{% block content %}
+<h1>Web of Science a SCOPUS</h1>
+
+<p>
+  K citačným databázam sa dá dostať z univerzitnej siete, prípadne z domu
+  použitím <a href="http://www.uniba.sk/index.php?id=proxy">univezitnej proxy</a>.
+</p>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Web of Science</div>
+  <div class="panel-body">
+    <ol>
+      <li>Otvorte si stránku <a href="http://apps.webofknowledge.com">Web of Knowledge</a></li>
+      <li>Prepnite sa na záložku <code>Web of Science</code></li>
+      <li>Vyplňte autora</li>
+      <li>Zmeňte <code>Timespan</code> na roky od 2008 do 2013</li>
+      <li>Vyhľadajte výsledky</li>
+      <li>Otvorte si prehľad citácií pomocou linku <code>Create Citation Report</code>
+    </ol>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">SCOPUS</div>
+  <div class="panel-body">
+    <ol>
+      <li>Otvorte si stránku <a href="http://scopus.com">SCOPUS</a></li>
+      <li>Prepnite sa na záložku <code>Author search</code></li>
+      <li>Vyplňte autora</li>
+      <li>Vyhľadajte výsledky</li>
+      <li>Zaškrtnite riadky v tabuľke autorov, ktoré odkazujú na Vás</li>
+      <li>Kliknite na linku <code>View citation overview</code>
+      <li>Zmeňte <code>Date range</code> na roky od 2008 do 2013</li>
+      <li>Aktualizujte prehľad pomocou <code>Update Overview</code>
+    </ol>
+  </div>
+</div>
+
+{% endblock %}

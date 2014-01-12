@@ -23,6 +23,10 @@ def index():
 def kategorizacia():
   return render_template('kategorizacia.html')
 
+@app.route('/wos-a-scopus')
+def wos_a_scopus():
+  return render_template('wos-a-scopus.html')
+
 if __name__ == '__main__':
   import sys
 
