@@ -3,6 +3,8 @@ class Configuration(object):
     # tajny sifrovaci kluc
     self.secret = 'change this!'
 
+    self.conn_str = 'host=localhost dbname= user= password='
+
     ADMINS = ['email@example.com']
     if not app.debug:
       import logging

@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% block title %}Impakt faktory{% endblock %}
+{% block content %}
+<h1>Impakt faktory</h1>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Journal</th>
+      <th>ISSN</th>
+      <th>Impakt faktor</th>
+      <th>SNIP</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for id, source_title, source_abbr, snip, if, issns in data %}
+    <tr>
+      <td>{{ source_title or source_abbr }}</td>
+      <td>{{ issns|join(', ') }}</td>
+      <td>{{ if }}</td>
+      <td>{{ snip }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

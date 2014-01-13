@@ -1,4 +1,4 @@
 Zavislosti:
 
-pip install Flask
+pip install Flask psycopg2 python-stdnum
 
