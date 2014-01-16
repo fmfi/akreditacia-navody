@@ -24,9 +24,9 @@
     </tr>
   </thead>
   <tbody>
-    {% for id, source_title, source_abbr, snip, if, issns in data %}
+    {% for id, source, snip, if, issns in data %}
     <tr>
-      <td>{{ source_title or source_abbr }}</td>
+      <td>{{ source }}</td>
       <td>{{ issns|join(', ') }}</td>
       <td>{{ if }}</td>
       <td>{{ snip }}</td>

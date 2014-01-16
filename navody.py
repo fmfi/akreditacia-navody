@@ -39,20 +39,20 @@ def impakt_faktor():
 @app.route('/impakt-faktor/vsetky')
 def impakt_faktor_vsetky():
   def query(cursor):
-    cursor.execute('SELECT DISTINCT id, source_title, source_abbr, snip_2012, if_2013, issn FROM impact_factors, impact_factors_issn WHERE id = impact_factors_id AND (snip_2012 IS NOT NULL OR if_2013 IS NOT NULL) ORDER BY source_title, id, issn')
+    cursor.execute('SELECT DISTINCT id, COALESCE(source_title, source_abbr) AS source, snip_2012, if_2013, issn FROM impact_factors LEFT JOIN impact_factors_issn ON id = impact_factors_id WHERE (snip_2012 IS NOT NULL OR if_2013 IS NOT NULL) ORDER BY source, id, issn')
   return show_impakt_faktor(query, tab='vsetky')
 
 @app.route('/impakt-faktor/fmfi')
 def impakt_faktor_fmfi():
   def query(cursor):
-    cursor.execute('SELECT DISTINCT id, source_title, source_abbr, snip_2012, if_2013, impact_factors_issn.issn FROM impact_factors, impact_factors_issn, issn_login WHERE id = impact_factors_id AND (snip_2012 IS NOT NULL OR if_2013 IS NOT NULL) AND issn_login.issn = impact_factors_issn.issn ORDER BY source_title, id, issn')
+    cursor.execute('SELECT DISTINCT id, COALESCE(source_title, source_abbr) AS source, snip_2012, if_2013, impact_factors_issn.issn FROM impact_factors, impact_factors_issn, issn_login WHERE id = impact_factors_id AND (snip_2012 IS NOT NULL OR if_2013 IS NOT NULL) AND issn_login.issn = impact_factors_issn.issn ORDER BY source, id, issn')
   return show_impakt_faktor(query, tab='fmfi')
 
 @app.route('/impakt-faktor/moje')
 def impakt_faktor_moje():
   user = request.remote_user
   def query(cursor):
-    cursor.execute('SELECT DISTINCT id, source_title, source_abbr, snip_2012, if_2013, impact_factors_issn.issn FROM impact_factors, impact_factors_issn, issn_login WHERE id = impact_factors_id AND (snip_2012 IS NOT NULL OR if_2013 IS NOT NULL) AND issn_login.issn = impact_factors_issn.issn  AND issn_login.login = %s ORDER BY source_title, id, issn', (user,))
+    cursor.execute('SELECT DISTINCT id, COALESCE(source_title, source_abbr) AS source, snip_2012, if_2013, impact_factors_issn.issn FROM impact_factors, impact_factors_issn, issn_login WHERE id = impact_factors_id AND (snip_2012 IS NOT NULL OR if_2013 IS NOT NULL) AND issn_login.issn = impact_factors_issn.issn  AND issn_login.login = %s ORDER BY source, id, issn', (user,))
   return show_impakt_faktor(query, tab='moje')
 
 def show_impakt_faktor(run_query, **kwargs):
@@ -63,12 +63,12 @@ def show_impakt_faktor(run_query, **kwargs):
       run_query(cursor)
       lastid = None
       issns = []
-      for id, source_title, source_abbr, snip_2012, if_2013, issn in cursor:
+      for id, source, snip_2012, if_2013, issn in cursor:
         if lastid != id:
-          data.append((id, source_title, source_abbr, snip_2012, if_2013, [stdnum.issn.format(issn)]))
+          data.append((id, source, snip_2012, if_2013, []))
           lastid = id
-        else:
-          data[-1][5].append(stdnum.issn.format(issn))
+        if issn is not None:
+          data[-1][4].append(stdnum.issn.format(issn))
   return render_template('impakt-faktor.html', data=data, **kwargs)
 
 if __name__ == '__main__':
