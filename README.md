@@ -14,6 +14,9 @@ sudo chown ka:ka /var/www-apps/akreditacia-navody
 cd /var/www-apps/akreditacia-navody
 # Všimnime si bodku na konci nasledovného príkazu
 sudo -u ka -H git clone https://github.com/fmfi/akreditacia-navody.git .
+
+# Nainštalujme systémové závislosti
+sudo apt-get install build-essential python-dev libpq-dev python-virtualenv
 ```
 
 Prepnime sa do shellu používateľa ka:
