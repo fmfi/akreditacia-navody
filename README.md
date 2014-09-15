@@ -33,5 +33,33 @@ pip install -r requirements.txt
 
 TODO databáza
 TODO import impakt faktorov
-TODO apache
 
+## Konfigurácia Apache2
+
+```ApacheConf
+WSGIScriptAlias /ka/navody /var/www-apps/akreditacia-navody/navody.py
+Alias /ka/navody/static /var/www-apps/akreditacia-navody/static
+WSGIDaemonProcess kanavody user=ka group=ka processes=2 threads=15 display-name={%GROUP} python-path=/var/www-apps/akreditacia-navody:/var/www-apps/akreditacia-navody/venv/lib/python2.7/site-packages home=/var/www-apps/akreditacia-navody
+<Directory /var/www-apps/akreditacia-navody/>
+	WSGIProcessGroup kanavody
+	WSGICallableObject app
+	Require all granted
+</Directory>
+<Location /ka/navody/impakt-faktor/moje>
+	CosignAllowPublicAccess Off
+	AuthType Cosign
+</Location>
+```
+
+> Poznámka: Uvedená Apache konfigurácia je pre verziu 2.4, pre Apache 2.2 je namiesto
+> 
+> ```ApacheConf
+> Require all granted
+> ```
+>
+> Treba napísať:
+>
+> ```ApacheConf
+> Order deny,allow
+> Allow from all
+> ```
