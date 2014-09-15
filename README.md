@@ -31,8 +31,17 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-TODO databáza
-TODO import impakt faktorov
+## Impakt faktory
+
+SNIP a impakt faktory časopisov sa importujú z CSV súborov, ktoré boli medzi dokumentami akreditácie.
+Schéma PostgreSQL databázy je v `if-schema.sql` a importovací skript je v `if-import.py` a `snip-import.py`,
+samozrejme ich bude treba upraviť ak chceme importovať iné roky.
+
+```bash
+sudo -u ka psql akreditacia <if-schema.sql
+./if-import.py 'host=localhost dbname=akreditacia user=ka password=' <if-subor.csv
+./snip-import.py 'host=localhost dbname=akreditacia user=ka password=' <snip-subor.csv
+```
 
 ## Konfigurácia Apache2
 
